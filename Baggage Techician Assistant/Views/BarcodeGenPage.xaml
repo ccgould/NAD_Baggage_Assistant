@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             xmlns:customControls="clr-namespace:Baggage_Technician_Assistant.CustomControls"
+             x:Class="Baggage_Technician_Assistant.Views.BarcodeGenPage"
+             Title="Barcode Generator">
+    <VerticalStackLayout>
+
+        <Entry Text="{Binding Text}" Keyboard="Numeric" Placeholder="Enter Bag Tag Number"/>
+
+        <Frame BorderColor="Gray"
+               CornerRadius="5"
+               Padding="8">
+            <StackLayout>
+                <Label Text="ITF"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="Black"/>
+                <BoxView Color="Gray"
+                         HeightRequest="2"
+                         HorizontalOptions="Fill" />
+
+                <controls:BarcodeGeneratorView
+                    Grid.Row="2"
+                    HeightRequest="100"
+                    WidthRequest="300"
+                    ForegroundColor="Black"
+                    Value="{Binding Barcode}"
+                    Format="Itf"
+                    Margin="10" />
+            </StackLayout>
+        </Frame>
+
+        <Button Text="Generate" Command="{Binding GeneratePressedCommand}" CommandParameter="{Binding .}"/>
+    </VerticalStackLayout>
+</ContentPage>

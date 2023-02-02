@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customControls="clr-namespace:Baggage_Technician_Assistant.CustomControls"
+             x:Class="Baggage_Technician_Assistant.Views.CreateReportsPage"
+             Shell.PresentationMode="Modal"
+             Title="Create Reports">
+    
+    <ScrollView>
+        <Grid RowDefinitions="30,Auto,*, Auto">
+            <Label 
+                Grid.Row="0"
+                Text="To Create a report fill in the required fields and click submit."
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" TextColor="Black"/>
+
+            <customControls:OutlinedEntryControl Grid.Row="1" Placeholder="Enter Title" Text="{Binding Title}"/>
+            <Editor  Grid.Row="2" Placeholder="Enter Report"  Text="{Binding Message}"/>
+            <Button Grid.Row="3" HeightRequest="50" Text="Submit" Command="{Binding SubmitCommand}"/>
+
+        </Grid>
+    </ScrollView>
+    
+</ContentPage>

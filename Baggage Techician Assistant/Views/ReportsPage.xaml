@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Baggage_Technician_Assistant.Models"
+             xmlns:service ="clr-namespace:Baggage_Technician_Assistant.Services"
+             x:Class="Baggage_Technician_Assistant.Views.ReportsPage"
+             Title="Reports">
+    <ListView ItemsSource="{x:Static service:TerminalService.reports}"
+              BackgroundColor="Transparent"
+              SeparatorVisibility="None"
+              HasUnevenRows="True"
+              RowHeight="100"
+              ItemSelected="ListView_ItemSelected"
+              ItemTapped="ListView_ItemTapped"
+              >
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="model:Report">
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem Text="Delete" 
+                                  IsDestructive="True"
+                                  Clicked="MenuItem_Clicked"
+                                  />
+                    </ViewCell.ContextActions>
+                    <Grid Padding="10">
+                        <Frame CornerRadius="20" 
+                               HasShadow="True">
+                            <StackLayout>
+                                <Label VerticalOptions="Center"
+                                       FontSize="Large"
+                                       Text="{Binding Title}"
+                                       TextColor="Black"
+                                       LineBreakMode="TailTruncation"/>
+                                <Label VerticalOptions="Center" 
+                                       FontSize="Small" 
+                                       Text="{Binding Path=Terminal, StringFormat='Terminal: {0}'}" 
+                                       TextColor="Black"/>
+                                
+                                <Label VerticalOptions="Center" 
+                                       FontSize="Small" 
+                                       Text="{Binding ReportDetails}" 
+                                       TextColor="Black" 
+                                       LineBreakMode="TailTruncation"/>
+
+                                <StackLayout Orientation="Horizontal" 
+                                             Spacing="10">
+                                    <Label VerticalOptions="Center" 
+                                           FontSize="Small" 
+                                           Text="{Binding Path=Date,StringFormat='Date: {0}'}" 
+                                           TextColor="Black" 
+                                           LineBreakMode="TailTruncation"/>
+
+                                    <Label VerticalOptions="Center" 
+                                           FontSize="Small" 
+                                           Text="{Binding Path=Time,StringFormat='Time: {0}'}" 
+                                           TextColor="Black" 
+                                           LineBreakMode="TailTruncation"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

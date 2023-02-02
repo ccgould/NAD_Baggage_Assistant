@@ -1,4 +1,4 @@
-﻿namespace Baggage_Techician_Assistant;
+﻿namespace Baggage_Technician_Assistant;
 
 public partial class App : Application
 {

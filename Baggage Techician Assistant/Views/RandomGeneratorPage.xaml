@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Baggage_Technician_Assistant.Views.RandomGeneratorPage"
+             xmlns:controls="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+
+             Title="Random Generator">
+    <VerticalStackLayout>
+        <StackLayout Grid.Row="2" 
+                     Margin="20,40,20,0"
+                     Orientation="Vertical"
+                     Spacing="10">
+            <Frame BorderColor="Gray"
+                   CornerRadius="5"
+                   Padding="8">
+                <StackLayout>
+                    <Label Text="ITF"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="Black"/>
+                    <BoxView Color="Gray"
+                             HeightRequest="2"
+                             HorizontalOptions="Fill" />
+                    <controls:BarcodeGeneratorView
+                        Grid.Row="2"
+                        HeightRequest="100"
+                        WidthRequest="300"
+                        ForegroundColor="Black"
+                        Value="{Binding Itf}"
+                        Format="Itf"
+                        Margin="10" />
+                </StackLayout>
+            </Frame>
+
+            <Frame BorderColor="Gray"
+                   CornerRadius="5"
+                   Padding="8">
+                <StackLayout>
+                    <Label Text="PDF417"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="Black"/>
+                    <BoxView Color="Gray"
+                             HeightRequest="2"
+                             HorizontalOptions="Fill" />
+                    <controls:BarcodeGeneratorView
+                                HeightRequest="100"
+                        WidthRequest="300"
+                        ForegroundColor="Black"
+                        Value="{Binding Pdf417}"
+                        Format="Pdf417"
+                        Margin="10" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+
+
+        <Button HeightRequest="40" 
+                Text="Generate Random" 
+                Grid.Row="3" 
+                Margin="10" 
+                BackgroundColor="{StaticResource SecondaryColor}" 
+                Command="{Binding SetDataCommand}" 
+                CommandParameter="{Binding .}"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,14 +1,71 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="Baggage_Techician_Assistant.AppShell"
+    x:Class="Baggage_Technician_Assistant.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Baggage_Techician_Assistant"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:local="clr-namespace:Baggage_Technician_Assistant"
+    xmlns:views="clr-namespace:Baggage_Technician_Assistant.Views"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.NavBarIsVisible="True">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <FlyoutItem Title="Terminal">
+        <Tab Title="Terminal A" Route="TerminalA">
+           <ShellContent
+               Title="Counters"
+               ContentTemplate="{DataTemplate views:TerminalPage}"
+               Route="TerminalA" 
+               />
+           <!--<ShellContent
+               Title="Reports"
+               ContentTemplate="{DataTemplate views:ReportsPage}"
+               Route="TerminalA/Reports/A" />-->
+       </Tab>
+        <Tab Title="Terminal B" Route="TerminalB">
+            <ShellContent
+                Title="Counters"
+                ContentTemplate="{DataTemplate views:TerminalPage}"
+                Route="TerminalB" />
+            <!--<ShellContent
+                Title="Reports"
+                ContentTemplate="{DataTemplate views:ReportsPage}"
+                Route="TerminalB/Reports/B" />-->
+        </Tab>
+        <Tab Title="Terminal C" Route="TerminalC">
+            <ShellContent
+                Title="Counters"
+                ContentTemplate="{DataTemplate views:TerminalPage}"
+                Route="TerminalC" />
+            <!--<ShellContent
+                Title="Reports"
+                ContentTemplate="{DataTemplate views:ReportsPage}"
+                Route="TerminalC/Reports/C" />-->
+        </Tab>
+    </FlyoutItem>
 
+    <FlyoutItem Title="Reports">
+        <ShellContent Icon="info.png"
+                      ContentTemplate="{DataTemplate views:ReportsPage}"
+                      Route="Reports"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Generators">
+        <Tab>
+            <ShellContent Title="Generator"
+                          Icon="info.png"
+                          ContentTemplate="{DataTemplate views:RandomGeneratorPage}"
+                          Route="RandomGenerator"/>
+
+            <ShellContent Title="Bar Code Generator"
+                          Icon="info.png"
+                          ContentTemplate="{DataTemplate views:BarcodeGenPage}"
+                          Route="GenerateBagTag"/>
+        </Tab>
+
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settings">
+        <ShellContent Icon="info.png"
+                      ContentTemplate="{DataTemplate views:ReportsPage}"
+                      Route="Settings"/>
+    </FlyoutItem>
 </Shell>

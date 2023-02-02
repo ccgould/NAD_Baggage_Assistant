@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Baggage_Technician_Assistant.Models"
+             xmlns:viewModels="clr-namespace:Baggage_Technician_Assistant.ViewModels"
+             x:Class="Baggage_Technician_Assistant.Views.TerminalPage"
+             Title="Terminals">
+
+    <Grid VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Image
+            Aspect="Fill"
+            HeightRequest="300"
+            Source="overlay.png"
+            VerticalOptions="StartAndExpand" />
+        
+        <StackLayout
+            Grid.Row="0"
+            Margin="0,20"
+            HorizontalOptions="Center"
+            Orientation="Vertical"
+            VerticalOptions="Center">
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="70"
+                    Text="Terminal"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+            </StackLayout>
+            <Label
+                FontSize="16"
+                HorizontalOptions="Center"
+                Text="{Binding Terminal}"
+                TextColor="White" />
+        </StackLayout>
+
+        <Frame
+            Grid.Row="1"
+            Margin="20,-80,20,0"
+            Padding="0"
+            CornerRadius="10"
+            HasShadow="true"
+            HeightRequest="120"
+            VerticalOptions="Start"
+            BorderColor="Transparent">
+            <Grid
+                Margin="0,35,0,0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Vertical"
+                    Spacing="10">
+                    <Image Source="humidity.png" />
+                    <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            Text="{Binding CountersAmount}"
+                            TextColor="Black" />
+                        <Label
+                            FontSize="11"
+                            HorizontalOptions="Center"
+                            Text="Counters"
+                            TextColor="#7D7D7D" />
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout
+                    Grid.Column="1"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Vertical"
+                    Spacing="10">
+                    <Image Source="wind.png" />
+                    <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            Text="{Binding ReportsAmount}"
+                            TextColor="Black" />
+                        <Label
+                            FontSize="11"
+                            HorizontalOptions="Center"
+                            Text="Reports"
+                            TextColor="#7D7D7D" />
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout
+                    Grid.Column="2"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Vertical"
+                    Spacing="10">
+                    <Image Source="pressure.png" />
+                    <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            Text="0"
+                            TextColor="Black" />
+                        <Label
+                            FontSize="11"
+                            HorizontalOptions="Center"
+                            Text="Working %"
+                            TextColor="#7D7D7D" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Frame>
+
+
+        <CollectionView
+            Grid.Row="3"
+            Margin="10,40,10,0"
+            ItemsSource="{Binding Counters}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" VerticalItemSpacing="5" HorizontalItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Counter">
+                    <Border
+                        BackgroundColor="{StaticResource SecondaryColor}"
+                        StrokeShape="RoundRectangle 10"
+                        HeightRequest="120" WidthRequest="120">
+                        <Label Text="{Binding CounterNumber}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                CommandParameter="{Binding .}"  
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:TerminalPageViewModel}}, Path=GoToDetailsPageCommand}"/>
+                        </Border.GestureRecognizers>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>
