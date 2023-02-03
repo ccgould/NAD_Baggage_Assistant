@@ -12,7 +12,7 @@
 
 
             <Color x:Key="PrimaryColor">#0087C0</Color>
-            <Color x:Key="SecondaryColor">#ACC415</Color>
+            <Color x:Key="SecondaryColor">#382b73</Color>
 
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{DynamicResource White}" />
@@ -22,7 +22,7 @@
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="{DynamicResource White}" />
                 <Setter Property="FontFamily" Value="OpenSansRegular" />
-                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource SecondaryColor}" />
                 <Setter Property="Padding" Value="14,10" />
             </Style>
         </ResourceDictionary>

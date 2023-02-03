@@ -19,9 +19,10 @@ public partial class ReportsPage : ContentPage
     {
         var report = ((MenuItem)sender).BindingContext as Report;
         if (report == null) return;
-        bool anwser = await DisplayAlert("Deleted Report", report.Title, "Yes","No");
+        bool anwser = await DisplayAlert("Delete Report", report.Title, "Yes","No");
         if(anwser)
         {
+            TerminalService.main.Reports.Remove(report);
             await DisplayAlert("Report Deleted", string.Empty, "Ok");
         }
     }

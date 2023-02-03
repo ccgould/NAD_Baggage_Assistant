@@ -2,6 +2,7 @@
 using Baggage_Technician_Assistant.ViewModels;
 using Baggage_Technician_Assistant.Views;
 using ZXing.Net.Maui.Controls;
+using CommunityToolkit.Maui;
 
 namespace Baggage_Technician_Assistant;
 
@@ -13,6 +14,7 @@ public static class MauiProgram
 		builder
 			.UseMauiApp<App>()
             .UseBarcodeReader()
+            .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -42,11 +44,11 @@ public static class MauiProgram
         services.AddTransient<ReportsPage>();
         services.AddTransient<ReportsPageViewModel>();
 
-        services.AddSingleton<CreateReportsPage>();
-        services.AddSingleton<CreateReportsPageViewModel>();
-
         services.AddTransient<BarcodeGenPage>();
         services.AddTransient<BarcodeGenPageViewModel>();
+
+        services.AddTransient<SettingsPage>();
+        services.AddTransient<SettingsPageViewModel>();
 
         return builder.Build();
 	}

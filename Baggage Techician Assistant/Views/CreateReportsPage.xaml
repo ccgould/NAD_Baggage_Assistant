@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:customControls="clr-namespace:Baggage_Technician_Assistant.CustomControls"
+             xmlns:mct ="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
              x:Class="Baggage_Technician_Assistant.Views.CreateReportsPage"
-             Shell.PresentationMode="Modal"
-             Title="Create Reports">
+             CanBeDismissedByTappingOutsideOfPopup="False"
+           Size="300,500">
     
-    <ScrollView>
-        <Grid RowDefinitions="30,Auto,*, Auto">
+    <ScrollView BackgroundColor="White">
+        <Grid RowDefinitions="60,Auto,*, Auto,Auto">
             <Label 
                 Grid.Row="0"
                 Text="To Create a report fill in the required fields and click submit."
                 VerticalOptions="Center" 
-                HorizontalOptions="Center" TextColor="Black"/>
+                HorizontalOptions="Center" TextColor="Black"
+                Margin="20,20,20,0"
+                />
 
-            <customControls:OutlinedEntryControl Grid.Row="1" Placeholder="Enter Title" Text="{Binding Title}"/>
-            <Editor  Grid.Row="2" Placeholder="Enter Report"  Text="{Binding Message}"/>
-            <Button Grid.Row="3" HeightRequest="50" Text="Submit" Command="{Binding SubmitCommand}"/>
-
+            <customControls:OutlinedEntryControl Grid.Row="1" Placeholder="Enter Title" Text="{Binding Title}" x:Name="TitleTxt" BackgroundColor="Transparent" Margin="20,0,20,0"/>
+            <Editor  x:Name="MessageTxt" Grid.Row="2" Placeholder="Enter Report"  Text="{Binding Message}" Margin="20,0,20,0"/>
+            <Button  Grid.Row="3" HeightRequest="50" Text="Submit" Clicked="Submit_Clicked" Margin="20,0,20,20" BackgroundColor="{StaticResource SecondaryColor}"/>
+            <Button  Grid.Row="4" HeightRequest="50" Text="Cancel" Clicked="Cancel_Clicked" Margin="20,0,20,20" Background="Red"/>
         </Grid>
     </ScrollView>
     
-</ContentPage>
+</mct:Popup>

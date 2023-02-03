@@ -1,12 +1,22 @@
 using Baggage_Technician_Assistant.ViewModels;
+using CommunityToolkit.Maui.Views;
 
 namespace Baggage_Technician_Assistant.Views;
 
-public partial class CreateReportsPage : ContentPage
+public partial class CreateReportsPage : Popup
 {
-	public CreateReportsPage(CreateReportsPageViewModel vm)
+	public CreateReportsPage()
 	{
 		InitializeComponent();
-        BindingContext = vm;
+    }
+
+    private void Submit_Clicked(object sender, EventArgs e)
+    {
+        this.Close(new[] { TitleTxt.Text, MessageTxt.Text});
+    }
+
+    private void Cancel_Clicked(object sender, EventArgs e)
+    {
+        this.Close();
     }
 }

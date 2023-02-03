@@ -21,10 +21,5 @@ public partial class BarcodeGenPage : ContentPage
         {
 
         }
-
-
-
-
-
     }
 }

@@ -5,13 +5,15 @@
              xmlns:customControls="clr-namespace:Baggage_Technician_Assistant.CustomControls"
              x:Class="Baggage_Technician_Assistant.Views.BarcodeGenPage"
              Title="Barcode Generator">
-    <VerticalStackLayout>
+    
+    <VerticalStackLayout Margin="20">
 
         <Entry Text="{Binding Text}" Keyboard="Numeric" Placeholder="Enter Bag Tag Number"/>
 
-        <Frame BorderColor="Gray"
+        <Frame BorderColor="Transparent"
                CornerRadius="5"
-               Padding="8">
+               Padding="8"
+               >
             <StackLayout>
                 <Label Text="ITF"
                        FontSize="14"
@@ -32,6 +34,6 @@
             </StackLayout>
         </Frame>
 
-        <Button Text="Generate" Command="{Binding GeneratePressedCommand}" CommandParameter="{Binding .}"/>
+        <Button Text="Generate" Command="{Binding GeneratePressedCommand}" CommandParameter="{Binding .}" BackgroundColor="{StaticResource SecondaryColor}"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -4,6 +4,7 @@ using Baggage_Technician_Assistant.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using CommunityToolkit.Maui.Views;
 
 namespace Baggage_Technician_Assistant.ViewModels
 {
@@ -30,10 +31,26 @@ namespace Baggage_Technician_Assistant.ViewModels
         [RelayCommand]
         async Task AddReport()
         {
-            await Shell.Current.GoToAsync(nameof(CreateReportsPage), new Dictionary<string, object>()
+            var result = await App.Current.MainPage.ShowPopupAsync(new CreateReportsPage());
+
+            if(result is string[] data)
             {
-                {"Counter",counter}
-            });
+                TerminalService.main.AddReport(Counter, new Report
+                {
+                    Terminal = Counter.Terminal,
+                    Title = data[0],
+                    Date = DateTime.Now.ToShortDateString(),
+                    Time = DateTime.Now.ToShortTimeString(),
+                    Counter = Counter.CounterNumber,
+                    ReportDetails = data[1],
+                    IsCameraWorking = false,
+                    IsScaleWorking = false,
+                    IsScannerWorking = false,
+                    IsTabletWorking = false,
+                });
+
+                GetDetails();
+            }
         }
 
         [RelayCommand]

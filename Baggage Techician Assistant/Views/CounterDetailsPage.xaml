@@ -75,8 +75,8 @@
                     <StackLayout
                     HorizontalOptions="CenterAndExpand"
                     Orientation="Vertical"
-                    Spacing="10">
-                        <Image Source="humidity.png" />
+                    Spacing="3">
+                        <Image Source="check_list.png" HeightRequest="40" WidthRequest="40"/>
                         <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
                             <Label
                             FontAttributes="Bold"
@@ -96,8 +96,8 @@
                     Grid.Column="1"
                     HorizontalOptions="CenterAndExpand"
                     Orientation="Vertical"
-                    Spacing="10">
-                        <Image Source="wind.png" />
+                    Spacing="3">
+                        <Image Source="platform_scale.png" HeightRequest="40" WidthRequest="40"/>
                         <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
                             <Label
                             FontAttributes="Bold"
@@ -117,8 +117,8 @@
                     Grid.Column="2"
                     HorizontalOptions="CenterAndExpand"
                     Orientation="Vertical"
-                    Spacing="10">
-                        <Image Source="pressure.png" />
+                    Spacing="3">
+                        <Image Source="camera.png" HeightRequest="40" WidthRequest="40"/>
                         <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
                             <Label
                             FontAttributes="Bold"
@@ -138,8 +138,8 @@
                     Grid.Column="3"
                     HorizontalOptions="CenterAndExpand"
                     Orientation="Vertical"
-                    Spacing="14">
-                        <Image Source="cloudiness.png" />
+                    Spacing="3">
+                        <Image Source="serialization.png" HeightRequest="40" WidthRequest="40"/>
                         <StackLayout HorizontalOptions="CenterAndExpand" Spacing="7">
                             <Label
                             FontAttributes="Bold"
